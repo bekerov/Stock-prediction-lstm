@@ -5,20 +5,20 @@ Created by kunal on 11/23/17
 from data_generator import data_generator
 from model import lstm_model, sequence_length
 from keras.callbacks import ModelCheckpoint, TensorBoard
-from os import path,mkdir
+from os import path,makedirs
 
 
 BATCH_SIZE = 10
 stocks_csv = '../data/AAPL.csv'
-model_id = 7
+model_id = 0
 
 Models_folder = "../models/model_{}".format(model_id)
 if not path.exists(Models_folder):
-    mkdir(Models_folder)
+    makedirs(Models_folder)
 
 Logs_folder = "../logs/model_{}".format(model_id)
 if not path.exists(Logs_folder):
-    mkdir(Logs_folder)
+    makedirs(Logs_folder)
 
 filepath=path.join(Models_folder,"stock_prediction_model_{}".format(model_id)+"_.hdf5")
 checkpoint = ModelCheckpoint(filepath, monitor='val_loss', verbose=1, save_best_only=True, mode='min')
