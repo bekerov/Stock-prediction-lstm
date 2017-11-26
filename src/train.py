@@ -10,7 +10,7 @@ from os import path,makedirs
 
 BATCH_SIZE = 10
 stocks_csv = '../data/AAPL.csv'
-model_id = 0
+model_id = 1
 
 Models_folder = "../models/model_{}".format(model_id)
 if not path.exists(Models_folder):
@@ -26,7 +26,7 @@ callbacks_list = [checkpoint,TensorBoard(log_dir=Logs_folder, write_graph=False)
 
 
 model = lstm_model()
-model.compile(loss='mse', optimizer = 'adam')
+model.compile(loss='mae', optimizer = 'adam')
 model.fit_generator(data_generator(BATCH_SIZE, sequence_length,stocks_csv, mode='train'),callbacks=callbacks_list,steps_per_epoch=150,epochs=1000,
                     validation_data=data_generator(BATCH_SIZE,sequence_length,stocks_csv, mode='val'), validation_steps=35)
 

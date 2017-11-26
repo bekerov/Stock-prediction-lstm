@@ -6,7 +6,7 @@ from model import lstm_model, sequence_length
 from data_generator import data_generator
 from helper import plot_func
 
-model_path = '../models/model_6/stock_prediction_model_6_.hdf5'
+model_path = '../models/model_1/stock_prediction_model_1_.hdf5'
 stocks_csv = '../data/AAPL.csv'
 
 model = lstm_model()
